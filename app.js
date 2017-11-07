@@ -24,6 +24,7 @@ const wineGlass = new Pic ('wineGlass','imgs/wine-glass.jpg');
 
 const picArray = [bag, banana, bathroom, boots, breakfast, bubblegum ,chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, usb, waterCan, wineGlass];
 
+
 function Pic (type,src){
         this.type = type;
         this.src = src;
@@ -32,18 +33,19 @@ function Pic (type,src){
 
 console.log (picArray);
 
-//function appendRandomPic();
-    //picGame.prototype.wasPicked = function {
-    //   this.picked +=1;
-    ////};
-   // render() {
-//    const ele = document.createElement('img');
- //       ele.src = this.src;
-        //to do - check if it's adding a class)
-  //      return ele;
-  //  }
-//}
-//console.log(src);
+Pic.prototype.render = function (){
+    //create an image element
+    const ele = document.createElement ('img');
+    //give that element the current products image source
+    ele.src = this.src;
+    //return that elelment
+    return ele;
+}
+console.log ();
+//picGame.prototype.wasPicked = function {
+//       this.picked +=1;
+//};
+
 
 
 //let clicks = 0;
@@ -58,12 +60,17 @@ console.log (picArray);
  //   const clickedImage = e.target;
  //   console.log ('alrighty then');
 //}
-//for (let i = 0; i < 3 ; i++){
-//const Game = document.getElementById('Game');
-//randomPic = picArray[ Math.floor(Math.random()* 20)];
-//const randomPicEle = randomPic.render();
-//Game.appendChild(randomPicEle);
-//}
+for (let i = 0; i < 20; i ++ ){
+    appendRandomPic();
+}
+
+function appendRandomPic (){
+    const Game = document.getElementById('Game');
+    const randomPic = picArray[ Math.floor(Math.random()* picArray.length)];
+    const randomPicEle = randomPic.render();
+    Game.appendChild(randomPicEle);
+}
+console.log('Pic')
 
 
 //const main = document.querySelector('main');
