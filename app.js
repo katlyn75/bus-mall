@@ -15,7 +15,7 @@ const pen = new Pic ('pen', 'imgs/pen.jpg');
 const petSweep = new Pic ('petSweep', 'imgs/pet-sweep.jpg');
 const scissors = new Pic ('scissors', 'imgs/scissors.jpg');
 const shark = new Pic ('shark', 'imgs/shark.jpg');
-const sweep = new Pic ('sweep', 'imgs/sweep.jpg');
+const sweep = new Pic ('sweep', 'imgs/sweep.png');
 const tauntaun = new Pic ('tauntaun', 'imgs/tauntaun.jpg');
 const unicorn = new Pic ('unicorn', 'imgs/unicorn.jpg');
 const usb = new Pic ('usb', 'imgs/usb.gif');
@@ -41,45 +41,54 @@ Pic.prototype.render = function (){
     //return that elelment
     return ele;
 }
-console.log ();
-//picGame.prototype.wasPicked = function {
-//       this.picked +=1;
-//};
 
-
+Pic.prototype.wasPicked = function (){
+      this.picked += 1;
+}
 
 //let clicks = 0;
-//let Pic;
-
 
 //const imgs = document.querySelectorAll('img');
 //console.log ('imgs');
 //image-assets = [];
 
-//function clickHandler (e){
- //   const clickedImage = e.target;
- //   console.log ('alrighty then');
-//}
-for (let i = 0; i < 20; i ++ ){
+for (let i = 0; i < 3; i ++ ){
     appendRandomPic();
 }
 
+const Game = document.getElementById('Game');
+//const main = document.querySelector ('main'); 
+
+//create an event (click) handler
+function clickHandler (e){
+    const clickedPic = e.target;
+    if (clickedPic.id === 'Game')
+    return;
+
+    console.log ('clickedPic'); 
+
+
+    for (let i = 0; i < picArray.length; i ++){
+        const PicClass = clickedPic.classList.value;
+        if (picArray[i].type === PicClass){
+            picArray[i].wasClicked();
+            console.log ('number of pics', picArray[i].clicked);
+        }
+    }
+
+
+    clickedPic.remove();
+}
+    console.log ('clickedPic');   
+
+    Game.addEventListener ('click', clickHandler);
+    //main.addEventListener('click', clickHandler);
+    console.log ('heard by Game', e.target)
+
+//function to return pic from array randomly
 function appendRandomPic (){
     const Game = document.getElementById('Game');
     const randomPic = picArray[ Math.floor(Math.random()* picArray.length)];
     const randomPicEle = randomPic.render();
-    Game.appendChild(randomPicEle);
+    Game.appendChild(randomPicEle)
 }
-console.log('Pic')
-
-
-//const main = document.querySelector('main');
-
-//game.addEventListener ('click', clickHandler);
-//main.addEventListener('click', clickHandler);
-
-
- //imgs[i].addEventListener('click', clickHandler);
-//}
-
-
