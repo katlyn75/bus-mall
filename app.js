@@ -70,12 +70,16 @@ function clickHandler (e){
         }
     }
     clickedPic.remove();
-}
-    console.log ('clickedPic');   
 
+    for (let i = 0; i < 3; i ++ ){
+    appendRandomPic();
+    console.log ('clickedPic');
+    }   
+}
     Game.addEventListener ('click', clickHandler);
     //main.addEventListener('click', clickHandler);
-    console.log ('heard by Game', e.target)
+     console.log ('heard by Game', e.target)
+
 
 //function to return pic from array randomly
 function appendRandomPic (){
