@@ -46,12 +46,6 @@ Pic.prototype.wasPicked = function (){
       this.picked += 1;
 }
 
-//let clicks = 0;
-
-//const imgs = document.querySelectorAll('img');
-//console.log ('imgs');
-//image-assets = [];
-
 for (let i = 0; i < 3; i ++ ){
     appendRandomPic();
 }
@@ -75,8 +69,6 @@ function clickHandler (e){
             console.log ('number of pics', picArray[i].clicked);
         }
     }
-
-
     clickedPic.remove();
 }
     console.log ('clickedPic');   
