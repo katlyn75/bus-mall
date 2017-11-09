@@ -1,5 +1,7 @@
 'use strict';
 
+let clicks = 0;
+
 //creates array of images//
 const bag = new Pic ('bag', 'imgs/bag.jpg');
 const banana = new Pic ('banana', 'imgs/banana.jpg');
@@ -72,14 +74,19 @@ function clickHandler (e){
     }
     //main.addEventListener('click', clickHandler);
     
-    clickedPic.remove(); 
+    //clickedPic.remove(); 
     //removes clicked picture
-    document.querySelectorAll('img');
+    //document.querySelectorAll('img');
     //get an array of all html image elements
     const imgArray = document.querySelectorAll ('img');
-    console.log (imgArray);
+    for (let i = 0; i < 3; i ++){
+        imgArray[i].remove();
+    }
+    //console.log (imgArray);
     //loop through that array
-        appendRandomPic ();
+    for (let i = 0; i < 3; i ++){
+    appendRandomPic();
+}
     //remove each element in that array
     console.log ('clickedPic');
 }
