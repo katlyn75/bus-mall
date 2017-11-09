@@ -24,12 +24,11 @@ const wineGlass = new Pic ('wineGlass','imgs/wine-glass.jpg');
 
 const picArray = [bag, banana, bathroom, boots, breakfast, bubblegum ,chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, usb, waterCan, wineGlass];
 
-
 function Pic (type,src){
         this.type = type;
         this.src = src;
         this.picked = 0;
-    }
+};
 
 console.log (picArray);
 
@@ -40,7 +39,7 @@ Pic.prototype.render = function (){
     ele.src = this.src;
     //return that elelment
     return ele;
-}
+};
 
 Pic.prototype.wasPicked = function (){
       this.picked += 1;
@@ -51,13 +50,15 @@ for (let i = 0; i < 3; i ++ ){
 }
 
 const Game = document.getElementById('Game');
+   //Game.setAttribute.width = '50px';
+  //  Game.setAttribute.height = '50px';
 //const main = document.querySelector ('main'); 
 
 //create an event (click) handler
 function clickHandler (e){
     const clickedPic = e.target;
     if (clickedPic.id === 'Game')
-    return;
+        return;
 
     console.log ('clickedPic'); 
 
@@ -69,22 +70,32 @@ function clickHandler (e){
             console.log ('number of pics', picArray[i].clicked);
         }
     }
-    clickedPic.remove();
-
-    for (let i = 0; i < 3; i ++ ){
-    appendRandomPic();
-    console.log ('clickedPic');
-    }   
-}
-    Game.addEventListener ('click', clickHandler);
     //main.addEventListener('click', clickHandler);
-     console.log ('heard by Game', e.target)
+    
+    clickedPic.remove(); 
+    //removes clicked picture
+    document.querySelectorAll('img');
+    //get an array of all html image elements
+    const imgArray = document.querySelectorAll ('img');
+    console.log (imgArray);
+    //loop through that array
+        appendRandomPic ();
+    //remove each element in that array
+    console.log ('clickedPic');
+}
+Game.addEventListener ('click', clickHandler);
 
+for (let i = 0; i < 3; i ++ ){
+    appendRandomPic();
+    console.log ('heard by Game', e.target)
+    //main.addEventListener('click', clickHandler);
+    // console.log ('heard by Game', e.target)
+}
 
 //function to return pic from array randomly
 function appendRandomPic (){
-    const Game = document.getElementById('Game');
-    const randomPic = picArray[ Math.floor(Math.random()* picArray.length)];
-    const randomPicEle = randomPic.render();
-    Game.appendChild(randomPicEle)
-}
+   const Game = document.getElementById('Game');
+   const randomPic = picArray[ Math.floor(Math.random()* picArray.length)];
+   const randomPicEle = randomPic.render();
+   Game.appendChild(randomPicEle)
+};
