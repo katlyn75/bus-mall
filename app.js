@@ -3,6 +3,7 @@
 let clicks = 0;
 
 //creates array of images//
+'<!--- array of images--->'
 const bag = new Pic ('bag', 'imgs/bag.jpg');
 const banana = new Pic ('banana', 'imgs/banana.jpg');
 const bathroom = new Pic ('bathroom','imgs/bathroom.jpg');
@@ -45,26 +46,22 @@ Pic.prototype.render = function (){
 
 Pic.prototype.wasPicked = function (){
       this.picked += 1;
-}
+
 
 for (let i = 0; i < 3; i ++ ){
     appendRandomPic();
-}
-
-const Game = document.getElementById('Game');
-   //Game.setAttribute.width = '50px';
-  //  Game.setAttribute.height = '50px';
-//const main = document.querySelector ('main'); 
+    }
+};
+const Survey = document.getElementById('Survey');
 
 //create an event (click) handler
 function clickHandler (e){
     const clickedPic = e.target;
-    if (clickedPic.id === 'Game')
-        return;
+    if (clickedPic.id === 'Survey'){   
+    return;
+    }   
 
-    console.log ('clickedPic'); 
-
-
+    '<!--Voting survey of products. Click the picture to vote-->'
     for (let i = 0; i < picArray.length; i ++){
         const PicClass = clickedPic.classList.value;
         if (picArray[i].type === PicClass){
@@ -72,37 +69,35 @@ function clickHandler (e){
             console.log ('number of pics', picArray[i].clicked);
         }
     }
-    //main.addEventListener('click', clickHandler);
     
-    //clickedPic.remove(); 
-    //removes clicked picture
-    //document.querySelectorAll('img');
-    //get an array of all html image elements
-    const imgArray = document.querySelectorAll ('img');
-    for (let i = 0; i < 3; i ++){
-        imgArray[i].remove();
-    }
+}
+
+//clickedPic.remove(); 
+//get an array of all html image elements
+//removes clicked picture
+const imgArray = document.querySelectorAll ('img');
+for (let i = 0; i < 3; i ++){
+    imgArray[i].remove();
+}
+    const Survey = document.getElementById('Survey');
+    
+    while(Survey.firstChild){
+    Survey.removeChild(Survey.firstChild);
     //console.log (imgArray);
     //loop through that array
     for (let i = 0; i < 3; i ++){
     appendRandomPic();
+    }
 }
+    Survey.addEventListener ('click', clickHandler);
     //remove each element in that array
     console.log ('clickedPic');
-}
-Game.addEventListener ('click', clickHandler);
 
-for (let i = 0; i < 3; i ++ ){
-    appendRandomPic();
-    console.log ('heard by Game', e.target)
-    //main.addEventListener('click', clickHandler);
-    // console.log ('heard by Game', e.target)
-}
-
-//function to return pic from array randomly
-function appendRandomPic (){
-   const Game = document.getElementById('Game');
-   const randomPic = picArray[ Math.floor(Math.random()* picArray.length)];
-   const randomPicEle = randomPic.render();
-   Game.appendChild(randomPicEle)
-};
+    //for (let i = 0; i < 3; i ++ ){
+    function appendRandomPic (){
+    const Survey = document.getElementById('Survey');
+    const randomPic = picArray[ Math.floor(Math.random()* picArray.length)];
+    const randomPicEle = randomPic.render();
+    Survey.appendChild(randomPicEle);
+    }
+//};
