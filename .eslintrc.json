@@ -18,5 +18,7 @@
       
       "no-var": "warn",
       "prefer-const": "warn"
+    
     }
+  }      
   
