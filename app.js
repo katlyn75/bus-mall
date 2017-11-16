@@ -90,3 +90,4 @@ function appendRandomPic (){
     const randomPicEle = randomPic.render();
     Survey.appendChild(randomPicEle);
 }
+const canvas = document.getElementById('chart').getContext('2d');
